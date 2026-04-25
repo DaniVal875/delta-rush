@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dc23aodfauton"
+path="res://.godot/imported/Hwah!_4.wav-cf7619374e9c6582c9e69fc120e17141.sample"
+
+[deps]
+
+source_file="res://delta-rush/Assets Compartidos/VFX/Voces/Hwah!_4.wav"
+dest_files=["res://.godot/imported/Hwah!_4.wav-cf7619374e9c6582c9e69fc120e17141.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
