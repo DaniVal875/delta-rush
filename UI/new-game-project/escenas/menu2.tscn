@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://cjdrjwulqy624"]
+
+[ext_resource type="Script" uid="uid://dw83x2no1inlq" path="res://scripts/menu.gd" id="1_3nh36"]
+[ext_resource type="Texture2D" uid="uid://cw73foxue10jk" path="res://imagenes/background.jpg" id="1_mqw74"]
+
+[sub_resource type="GDScript" id="GDScript_itwu3"]
+script/source = "extends TextureRect
+"
+
+[node name="Control" type="Control" unique_id=778962238]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3nh36")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1441814424]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mqw74")
+script = SubResource("GDScript_itwu3")
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=2001248389]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 41.0
+offset_right = 735.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0.5176471, 0.8235294, 0.99215686, 1)
+theme_override_font_sizes/font_size = 50
+text = "  DELTA RUSH"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=830291498]
+layout_mode = 0
+offset_left = 322.0
+offset_top = 157.0
+offset_right = 819.0
+offset_bottom = 461.0
+theme_override_constants/separation = 100
+
+[node name="btnJugar" type="Button" parent="VBoxContainer" unique_id=42392984]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5176471, 0.8235294, 0.99215686, 1)
+theme_override_font_sizes/font_size = 50
+text = "JUGAR"
+
+[node name="btnSalir" type="Button" parent="VBoxContainer" unique_id=168224254]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5176471, 0.8235294, 0.99215686, 1)
+theme_override_font_sizes/font_size = 50
+text = "SALIR"
+
+[connection signal="pressed" from="VBoxContainer/btnJugar" to="." method="_on_btn_jugar_pressed"]
+[connection signal="pressed" from="VBoxContainer/btnSalir" to="." method="_on_btn_salir_pressed"]
