@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://odp7cvjm62cx"]
+
+[ext_resource type="Script" uid="uid://dw83x2no1inlq" path="res://scripts/menu.gd" id="1_d7r87"]
+[ext_resource type="Texture2D" uid="uid://cw73foxue10jk" path="res://imagenes/background.jpg" id="2_2owot"]
+
+[node name="Control" type="Control" unique_id=1152497790]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d7r87")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=516596185]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=18589512]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2owot")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=1920912730]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.035
+offset_left = 391.0
+offset_top = 8.0
+offset_right = 713.0
+offset_bottom = 154.32
+theme_override_colors/font_color = Color(0.13662001, 0.98132676, 0.99999994, 1)
+theme_override_font_sizes/font_size = 60
+text = "     MENÚ 
+ PRINCIPAL"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=792367386]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 187.0
+offset_right = 761.0
+offset_bottom = 482.0
+theme_override_constants/separation = 70
+
+[node name="btnJugar" type="Button" parent="VBoxContainer" unique_id=848902536]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.13725491, 0.98039216, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "JUGAR"
+
+[node name="btnSalir" type="Button" parent="VBoxContainer" unique_id=1726901868]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.13725491, 0.98039216, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "SALIR"
