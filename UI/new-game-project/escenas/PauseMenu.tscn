@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://d1ysyvrrsll4t"]
+
+[ext_resource type="Script" uid="uid://cybbmvmie2lyh" path="res://scripts/pause_menu.gd" id="1_m1gaa"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1773230764]
+process_mode = 3
+script = ExtResource("1_m1gaa")
+
+[node name="PauseMenu" type="Control" parent="." unique_id=1667271389]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=1870703088]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.003921569)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/ColorRect" unique_id=2147236054]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -323.5
+offset_top = -79.0
+offset_right = 323.5
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+
+[node name="btnReanudar" type="Button" parent="PauseMenu/ColorRect/VBoxContainer" unique_id=411162341]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "REANUDAR"
+
+[node name="btnSalirMenuPrincipal" type="Button" parent="PauseMenu/ColorRect/VBoxContainer" unique_id=1733679063]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "SALIR AL MENÚ PRINCIPAL"
+
+[connection signal="pressed" from="PauseMenu/ColorRect/VBoxContainer/btnReanudar" to="." method="_on_btn_reanudar_pressed"]
+[connection signal="pressed" from="PauseMenu/ColorRect/VBoxContainer/btnReanudar" to="PauseMenu" method="_on_btn_reanudar_pressed"]
+[connection signal="pressed" from="PauseMenu/ColorRect/VBoxContainer/btnSalirMenuPrincipal" to="." method="_on_btn_salir_menu_principal_pressed"]
+[connection signal="pressed" from="PauseMenu/ColorRect/VBoxContainer/btnSalirMenuPrincipal" to="PauseMenu" method="_on_btn_salir_menu_principal_pressed"]

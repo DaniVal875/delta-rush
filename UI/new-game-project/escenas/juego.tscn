@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://cpguu3nx33gwy"]
 
-[node name="Juego" type="Node3D" unique_id=2261631]
+[ext_resource type="PackedScene" uid="uid://d1ysyvrrsll4t" path="res://escenas/PauseMenu.tscn" id="1_dayui"]
+
+[node name="Juego" type="Node3D" unique_id=1758147222]
+
+[node name="CanvasLayer" parent="." unique_id=1773230764 instance=ExtResource("1_dayui")]
