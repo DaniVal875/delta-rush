@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cevxyqoqe50mv"
+path="res://.godot/imported/naturePack_065.obj-90d49b31cae4c2dd92a9e5f6fc9d9ba0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/naturePack_065.obj-90d49b31cae4c2dd92a9e5f6fc9d9ba0.mesh"]
+
+source_file="res://delta-rush/Arma/Tests/GodotActionRPG-Assets/Models/Environment/naturePack_065.obj"
+dest_files=["res://.godot/imported/naturePack_065.obj-90d49b31cae4c2dd92a9e5f6fc9d9ba0.mesh", "res://.godot/imported/naturePack_065.obj-90d49b31cae4c2dd92a9e5f6fc9d9ba0.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

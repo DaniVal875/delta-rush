@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://pj27xuqg0ebx"]
+
+[ext_resource type="Material" path="res://delta-rush/Arma/Tests/GodotActionRPG-Assets/Models/Other.material" id="1_16k11"]
+[ext_resource type="Script" uid="uid://4jlwlvlfwisr" path="res://delta-rush/Arma/Tests/jugador.gd" id="1_ukil5"]
+[ext_resource type="Script" uid="uid://cn8ypmdvjap1a" path="res://delta-rush/Arma/Tests/nodo_camara.gd" id="2_8o684"]
+[ext_resource type="PackedScene" uid="uid://b32i878he3bbt" path="res://delta-rush/Arma/Scenes/Weapon.tscn" id="4_idnkd"]
+[ext_resource type="PackedScene" uid="uid://b8q8bf71w1e4x" path="res://delta-rush/Arma/Blaster Pack/blaster-e.glb" id="5_3pybd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8o684"]
+
+[node name="Jugador" type="CharacterBody3D" unique_id=720799230]
+script = ExtResource("1_ukil5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2087484844]
+material_override = ExtResource("1_16k11")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=208422004]
+shape = SubResource("CapsuleShape3D_8o684")
+
+[node name="Pivote" type="Node3D" parent="." unique_id=437741350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.07151806)
+script = ExtResource("2_8o684")
+
+[node name="Camera3D" type="Camera3D" parent="Pivote" unique_id=279464461]
+transform = Transform3D(1, 0, 0, 0, 0.9999939, -0.0034906515, 0, 0.0034906515, 0.9999939, 0, 0.75054085, 0.15852249)
+current = true
+fov = 81.63041
+
+[node name="GunView" type="Node3D" parent="Pivote/Camera3D" unique_id=894934414]
+transform = Transform3D(0.9504561, 0.0010851001, 0.31085703, -0.0010851003, 0.9999994, -0.00017293962, -0.31085712, -0.00017293962, 0.9504567, 0.733855, -0.004139781, -1.1860169)
+
+[node name="blaster-e2" parent="Pivote/Camera3D/GunView" unique_id=1816656395 instance=ExtResource("5_3pybd")]
+transform = Transform3D(0.9997454, -7.876725e-05, -0.022565156, 7.876736e-05, 1.0000004, -8.8941306e-07, 0.022565216, -8.896459e-07, 0.9997459, -0.0253582, -0.16933787, -0.31205952)
+
+[node name="Weapon" parent="Pivote/Camera3D" unique_id=1101248940 instance=ExtResource("4_idnkd")]
+transform = Transform3D(3, 0, 0, 0, 3.0000002, 0, 0, 0, 3.0000002, 0, -0.002154529, -0.6172313)
+
+[node name="Armas" type="Node3D" parent="." unique_id=1937712767]
+transform = Transform3D(0.11296033, 0, 0, 0, 0.08881732, 0, 0, 0, 1, 0.8505697, 0, -0.31602716)
+
+[node name="AttackRayCast3D" type="RayCast3D" parent="." unique_id=731155862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="WeaponSocket" type="Node3D" parent="." unique_id=152182695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50536764, 0)

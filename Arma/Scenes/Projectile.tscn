@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://csty0mts1x8ra"]
+
+[ext_resource type="PackedScene" uid="uid://d1exmhwbbvmwj" path="res://delta-rush/Arma/Blaster Pack/bullet-foam-tip.glb" id="1_1ydw7"]
+[ext_resource type="Script" uid="uid://u7vgv24kjime" path="res://delta-rush/Arma/Scripts/projectile.gd" id="1_7qlsn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ydw7"]
+radius = 0.011
+height = 0.07
+
+[node name="Projectile" type="Area3D" unique_id=2145609547]
+script = ExtResource("1_7qlsn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=655381345]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_1ydw7")
+
+[node name="Visual" type="Node3D" parent="." unique_id=1060652458]
+
+[node name="Bullet" parent="Visual" unique_id=154749652 instance=ExtResource("1_1ydw7")]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0.028977692)
+
+[node name="LifeTimer" type="Timer" parent="." unique_id=96439832]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
