@@ -39,7 +39,7 @@ var estado_actual: EstadoMovimiento = EstadoMovimiento.SUELO # Estado inicial.
 @export var velocidad_base_correr_pared: float = 14.0
 @export var velocidad_maxima_correr_pared: float = 24.0 
 @export var aceleracion_correr_pared: float = 8.0 
-@export var tiempo_maximo_correr_pared: float = 3.0 # Límite de 3 segundos para el wall-run.
+@export var tiempo_maximo_correr_pared: float = 2.0 # Límite de 3 segundos para el wall-run.
 
 @export_category("Movilidad Aerea")
 @export var fuerza_salto: float = 7.5
@@ -84,7 +84,6 @@ var esta_corriendo: bool = false # Estado del sprint "toggle".
 func _ready() -> void:
 	# Capturamos el ratón para que no se salga de la ventana de juego.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	add_to_group("player")
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Manejamos la rotación con el ratón.
@@ -114,7 +113,7 @@ func _physics_process(delta: float) -> void:
 	_manejar_gravedad(delta)
 	_manejar_saltos()
 	_manejar_movimiento(direccion_input, delta)
-	_manejar_posture(delta) 
+	_manejar_postura(delta)
 	_manejar_inclinacion_camara(delta)
 	_manejar_apuntado(delta)
 	
@@ -229,35 +228,46 @@ func _manejar_saltos() -> void:
 			velocity += frente_jugador.normalized() * impulso_doble_salto
 
 func _manejar_movimiento(direccion_input: Vector2, delta: float) -> void:
-	# Lógica de Sprint Pegajoso.
+	# [TOGGLE SPRINT]: Evitamos sondear la acción continuamente. 
+	# La bandera se levanta en el frame del "press" y se limpia solo al soltar el vector director.
 	if Input.is_action_just_pressed("sprint") and direccion_input != Vector2.ZERO:
 		esta_corriendo = true
 	if direccion_input == Vector2.ZERO:
 		esta_corriendo = false
 
 	if estado_actual == EstadoMovimiento.CORRER_PARED:
-		# Aceleramos mientras estamos en la pared.
+		# 'move_toward' es una interpolación lineal estricta. 
+		# Garantiza aceleración constante independiente del framerate, a diferencia de lerp.
 		velocidad_actual = move_toward(velocidad_actual, velocidad_maxima_correr_pared, aceleracion_correr_pared * delta)
 		
-		# Producto Cruz: Calcula un vector paralelo a la pared.
+		# [ÁLGEBRA LINEAL - CROSS PRODUCT]: El producto cruz entre el vector Y global (UP) y la normal de la pared 
+		# genera un vector ortogonal perfecto que es tangente a la malla de colisión.
 		var frente_pared := Vector3.UP.cross(normal_pared).normalized()
-		var frente_jugador := -global_transform.basis.z
+		# En la convención de Godot/OpenGL, -Z representa el "forward" local del Transform.
+		var frente_jugador := -global_transform.basis.z 
 		
-		# Si el vector apunta hacia atrás, lo invertimos.
+		# [PRODUCTO PUNTO]: Si el dot product es < 0, el ángulo entre los vectores es mayor a 90°.
+		# Significa que el cross product generó el vector apuntando hacia atrás de la cámara. Lo invertimos.
 		if frente_pared.dot(frente_jugador) < 0:
 			frente_pared = -frente_pared
 			
 		var velocidad_objetivo: Vector3 = frente_pared * velocidad_actual
 		
-		# Aplicamos movimiento y fuerza hacia la pared para no despegarnos.
+		# [FUERZA CENTRÍPETA ARTIFICIAL]: Restar la normal empuja el KinematicBody activamente contra la pared.
+		# Esto mitiga los errores de coma flotante que harían que is_on_wall() o los RayCasts fallen en el siguiente tick físico.
 		velocity.x = velocidad_objetivo.x - (normal_pared.x * 2.0)
 		velocity.z = velocidad_objetivo.z - (normal_pared.z * 2.0)
 		
 	elif estado_actual == EstadoMovimiento.DESLIZARSE:
-		# La fricción frena el deslizamiento.
+		# 'lerpf' crea un decaimiento asintótico. Genera una curva de fricción exponencial, no lineal.
 		velocidad_actual = lerpf(velocidad_actual, 0.0, friccion_deslizamiento * delta)
 		
+		# [MATRIZ DE TRANSFORMACIÓN]: Multiplicar la base (basis) por el input convierte las 
+		# coordenadas locales de entrada (WASD) al espacio global del mundo 3D.
 		var direccion := (transform.basis * Vector3(direccion_input.x, 0, direccion_input.y)).normalized()
+		
+		# Hacemos un lerp vectorial entre la inercia guardada y el input actual para permitir
+		# un "steering" (control de trayectoria) ligero sin romper el momentum principal.
 		var direccion_deslizamiento: Vector3 = vector_deslizamiento.lerp(direccion, 2.0 * delta).normalized()
 		
 		velocity.x = direccion_deslizamiento.x * velocidad_actual
@@ -273,16 +283,22 @@ func _manejar_movimiento(direccion_input: Vector2, delta: float) -> void:
 		var direccion := (transform.basis * Vector3(direccion_input.x, 0, direccion_input.y)).normalized()
 		var velocidad_objetivo_esperada = velocidad_correr if esta_corriendo else velocidad_caminar
 		
-		# Conservación de Momentum: si vienes muy rápido, frenas lento.
+		# [CONSERVACIÓN DE MOMENTUM]: Ponderamos el factor de interpolación dinámicamente.
+		# Si la velocidad actual es mayor a la esperada (ej. saliendo de un wall-run o slide jump),
+		# la desaceleración es lenta (5.0). Si acelera de 0 a sprint, la respuesta es rápida (15.0).
 		var aceleracion = 5.0 if velocidad_actual > velocidad_objetivo_esperada else 15.0
 		velocidad_actual = lerpf(velocidad_actual, velocidad_objetivo_esperada, aceleracion * delta)
 		
 		var velocidad_objetivo: Vector3 = direccion * velocidad_actual
+		
+		# Diferenciamos la aceleración si está en el aire para limitar/permitir el "air strafing" (control aéreo).
 		var aceleracion_suelo := 15.0 if is_on_floor() else 3.0 
 		
 		if direccion == Vector3.ZERO and is_on_floor():
-			aceleracion_suelo = 12.0 # Fricción de frenado.
+			# Frenado estático duro. Evita el efecto de "patinaje sobre hielo" endémico de los CharacterBody3D.
+			aceleracion_suelo = 12.0 
 			
+		# Aplicamos el resultado al vector de velocidad del motor. 'move_and_slide' hará el cálculo de colisiones.
 		velocity.x = lerpf(velocity.x, velocidad_objetivo.x, aceleracion_suelo * delta)
 		velocity.z = lerpf(velocity.z, velocidad_objetivo.z, aceleracion_suelo * delta)
 
