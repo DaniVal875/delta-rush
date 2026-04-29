@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b428x8an21qop"]
+
+[ext_resource type="PackedScene" uid="uid://baf8gr7533626" path="res://Free Modular Low Poly Dungeon/low poly dungeon assets.fbx" id="1_7m3ur"]
+[ext_resource type="PackedScene" uid="uid://5hrvxgm2ojl1" path="res://Free Modular Low Poly Dungeon/low poly dungeon sample.fbx" id="2_g3ije"]
+
+[node name="Decoracion" type="Node3D" unique_id=1673926925]
+
+[node name="low poly dungeon assets" parent="." unique_id=361546573 instance=ExtResource("1_7m3ur")]
+
+[node name="low poly dungeon sample" parent="." unique_id=724510535 instance=ExtResource("2_g3ije")]
+transform = Transform3D(0.99935496, 0, 0.035911154, 0, 1, 0, -0.035911154, 0, 0.99935496, -14.589421, 0, 35.923855)
