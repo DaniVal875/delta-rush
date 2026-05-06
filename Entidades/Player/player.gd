@@ -8,7 +8,7 @@ var estado_actual: EstadoMovimiento = EstadoMovimiento.SUELO
 @export_category("Movimiento")
 @export var velocidad_caminar: float = 8.0
 @export var velocidad_correr: float = 14.0
-@export var velocidad_agachado: float = 4.0 
+@export var velocidad_agachado: float = 2.0 
 @export var sensibilidad_raton: float = 0.002
 @export var sensibilidad_mando: float = 3.0 
 
@@ -22,7 +22,7 @@ var estado_actual: EstadoMovimiento = EstadoMovimiento.SUELO
 @export var impulso_deslizamiento: float = 5.0 
 @export var friccion_deslizamiento: float = 2.0 
 @export var altura_cabeza_parado: float = 0.6
-@export var altura_cabeza_agachado: float = 0.0
+@export var altura_cabeza_agachado: float = -0.6
 
 @export_category("Correr en Pared")
 @export var velocidad_base_correr_pared: float = 14.0
@@ -248,7 +248,7 @@ func _manejar_inclinacion_camara(delta: float) -> void:
 	var inclinacion_objetivo := 0.0
 	
 	if estado_actual == EstadoMovimiento.CORRER_PARED:
-		inclinacion_objetivo = angulo_inclinacion_camara if corriendo_pared_izquierda else -angulo_inclinacion_camara
+		inclinacion_objetivo = -angulo_inclinacion_camara if corriendo_pared_izquierda else angulo_inclinacion_camara
 	elif estado_actual == EstadoMovimiento.DESLIZARSE:
 		inclinacion_objetivo = randf_range(-0.02, 0.02) 
 		

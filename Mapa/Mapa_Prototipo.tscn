@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://l5kavmb3c5r0"]
 
 [ext_resource type="Script" uid="uid://cyho3xutg8yca" path="res://delta-rush/Mapa/mapa_prototipo.gd" id="1_41rhg"]
-[ext_resource type="PackedScene" uid="uid://d2af8p3xj072i" path="res://delta-rush/Entidades/player.tscn" id="1_uia42"]
+[ext_resource type="PackedScene" uid="uid://d2af8p3xj072i" path="res://delta-rush/Entidades/Player/player.tscn" id="2_41rhg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uia42"]
 sky_curve = 0.7135259
@@ -31,9 +31,6 @@ data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 
 
 [node name="StaticBody3D" type="Node3D" unique_id=1587885168]
 script = ExtResource("1_41rhg")
-
-[node name="Player" parent="." unique_id=1588911036 instance=ExtResource("1_uia42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1744266, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=642074000]
 environment = SubResource("Environment_41rhg")
@@ -2775,3 +2772,6 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="Node3D2/Schunk4/Chunk4" unique_id=992290658]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2, 0, 2)
 shape = SubResource("ConcavePolygonShape3D_uia42")
+
+[node name="Player" parent="." unique_id=1588911036 instance=ExtResource("2_41rhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

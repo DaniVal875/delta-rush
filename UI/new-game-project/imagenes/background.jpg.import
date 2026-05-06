@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cw73foxue10jk"
-path="res://.godot/imported/background.jpg-a9ba1a7caae82f1ae6e84730f7cc79e1.ctex"
+path="res://.godot/imported/background.jpg-ad15d46afe35a94db7e2c6c7be76b544.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imagenes/background.jpg"
-dest_files=["res://.godot/imported/background.jpg-a9ba1a7caae82f1ae6e84730f7cc79e1.ctex"]
+source_file="res://delta-rush/UI/new-game-project/imagenes/background.jpg"
+dest_files=["res://.godot/imported/background.jpg-ad15d46afe35a94db7e2c6c7be76b544.ctex"]
 
 [params]
 

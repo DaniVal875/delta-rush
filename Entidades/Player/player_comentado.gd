@@ -33,7 +33,7 @@ var estado_actual: EstadoMovimiento = EstadoMovimiento.SUELO # Estado inicial.
 @export var impulso_deslizamiento: float = 5.0 # Fuerza extra al iniciar el slide.
 @export var friccion_deslizamiento: float = 2.0 # Qué tan rápido te detienes al deslizarte.
 @export var altura_cabeza_parado: float = 0.6
-@export var altura_cabeza_agachado: float = 0.0
+@export var altura_cabeza_agachado: float = -0.6
 
 @export_category("Correr en Pared")
 @export var velocidad_base_correr_pared: float = 14.0
@@ -76,7 +76,6 @@ var velocidad_actual: float = velocidad_caminar
 var doble_salto_usado: bool = false # Control de salto único en el aire.
 var temporizador_correr_pared: float = 0.0 # Cronómetro para el wall-run.
 var esta_corriendo: bool = false # Estado del sprint "toggle".
-
 # ==========================================================
 # 5. FUNCIONES PRINCIPALES (CICLO DE VIDA)
 # ==========================================

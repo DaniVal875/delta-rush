@@ -36,5 +36,5 @@ func _on_reanudar_pressed():
 func _on_salir_pressed():
 	get_tree().paused = false
 	# === CAMBIA ESTA RUTA por la correcta de tu menú principal ===
-	get_tree().change_scene_to_file("res://escenas/menu2.tscn")
+	get_tree().change_scene_to_file("res://delta-rush/UI/new-game-project/escenas/menu2.tscn")
 	

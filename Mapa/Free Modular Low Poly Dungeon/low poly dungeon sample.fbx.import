@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://5hrvxgm2ojl1"
-path="res://.godot/imported/low poly dungeon sample.fbx-748d1107db101d1f3c2717a821505775.scn"
+path="res://.godot/imported/low poly dungeon sample.fbx-500d640ffe262fa72c84f0a0d8ccbd8c.scn"
 
 [deps]
 
-source_file="res://Free Modular Low Poly Dungeon/low poly dungeon sample.fbx"
-dest_files=["res://.godot/imported/low poly dungeon sample.fbx-748d1107db101d1f3c2717a821505775.scn"]
+source_file="res://delta-rush/Mapa/Free Modular Low Poly Dungeon/low poly dungeon sample.fbx"
+dest_files=["res://.godot/imported/low poly dungeon sample.fbx-500d640ffe262fa72c84f0a0d8ccbd8c.scn"]
 
 [params]
 

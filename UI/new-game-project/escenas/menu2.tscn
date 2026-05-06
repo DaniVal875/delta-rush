@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjdrjwulqy624"]
 
-[ext_resource type="Script" uid="uid://dw83x2no1inlq" path="res://scripts/menu.gd" id="1_3nh36"]
-[ext_resource type="Texture2D" uid="uid://cw73foxue10jk" path="res://imagenes/background.jpg" id="1_mqw74"]
+[ext_resource type="Script" uid="uid://dw83x2no1inlq" path="res://delta-rush/UI/new-game-project/scripts/menu.gd" id="1_3nh36"]
+[ext_resource type="Texture2D" uid="uid://cw73foxue10jk" path="res://delta-rush/UI/new-game-project/imagenes/background.jpg" id="1_mqw74"]
 
 [sub_resource type="GDScript" id="GDScript_itwu3"]
 script/source = "extends TextureRect

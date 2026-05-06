@@ -1,3 +1,14 @@
 [gd_scene format=3 uid="uid://d3redosx4k4j6"]
 
+[ext_resource type="PackedScene" uid="uid://c52aagx3q2upc" path="res://delta-rush/Mapa/Escenas/Mapa.tscn" id="1_rsaiv"]
+[ext_resource type="PackedScene" uid="uid://d2af8p3xj072i" path="res://delta-rush/Entidades/Player/player.tscn" id="2_rf02o"]
+[ext_resource type="PackedScene" uid="uid://d1ysyvrrsll4t" path="res://delta-rush/UI/new-game-project/escenas/PauseMenu.tscn" id="3_rf02o"]
+
 [node name="Main" type="Node3D" unique_id=16412285]
+
+[node name="Node3D" parent="." unique_id=2133891757 instance=ExtResource("1_rsaiv")]
+
+[node name="Player" parent="." unique_id=1588911036 instance=ExtResource("2_rf02o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2440374, 0)
+
+[node name="CanvasLayer" parent="." unique_id=1773230764 instance=ExtResource("3_rf02o")]
