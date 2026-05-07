@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d2af8p3xj072i"]
 
 [ext_resource type="Script" uid="uid://bxqvu0smaogp0" path="res://delta-rush/Entidades/Player/player.gd" id="1_cah14"]
+[ext_resource type="PackedScene" uid="uid://b32i878he3bbt" path="res://delta-rush/Arma/Scenes/Weapon.tscn" id="2_ws3jc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5peec"]
 
@@ -28,6 +29,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=214328194]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.24513865)
+
+[node name="Weapon" parent="Head/Camera3D" unique_id=1101248940 instance=ExtResource("2_ws3jc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6421356)
+projectile_speed = 25.0
 
 [node name="WallRayLeft" type="RayCast3D" parent="." unique_id=35938657]
 target_position = Vector3(-0.8, 0, 0)

@@ -5,7 +5,6 @@ var is_active: bool = false
 func _ready() -> void:
 	$GreenLight.visible = false
 	$ResetTimer.timeout.connect(_on_reset_timer_timeout)
-	print("Target ready")
 
 func on_projectile_hit(projectile: Node) -> void:
 	if is_active:

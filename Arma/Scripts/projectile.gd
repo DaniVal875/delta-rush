@@ -7,9 +7,9 @@ extends Area3D
 var direction: Vector3 = Vector3.ZERO
 var shooter: Node = null
 
-func _ready() -> void:
-	body_entered.connect(_on_body_entered)
-	$LifeTimer.timeout.connect(_on_life_timer_timeout)
+#func _ready() -> void:
+	#body_entered.connect(_on_body_entered)
+	#$LifeTimer.timeout.connect(_on_life_timer_timeout)
 
 func setup(start_transform: Transform3D, projectile_damage: float, projectile_speed: float, owner_shooter: Node = null) -> void:
 	global_transform = start_transform

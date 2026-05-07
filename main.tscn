@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c52aagx3q2upc" path="res://delta-rush/Mapa/Escenas/Mapa.tscn" id="1_rsaiv"]
 [ext_resource type="PackedScene" uid="uid://d2af8p3xj072i" path="res://delta-rush/Entidades/Player/player.tscn" id="2_rf02o"]
 [ext_resource type="PackedScene" uid="uid://d1ysyvrrsll4t" path="res://delta-rush/UI/new-game-project/escenas/PauseMenu.tscn" id="3_rf02o"]
+[ext_resource type="PackedScene" uid="uid://caj6l7u8iwwti" path="res://delta-rush/Arma/Scenes/Target.tscn" id="4_kp5ch"]
 
 [node name="Main" type="Node3D" unique_id=16412285]
 
@@ -12,3 +13,15 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2440374, 0)
 
 [node name="CanvasLayer" parent="." unique_id=1773230764 instance=ExtResource("3_rf02o")]
+
+[node name="Target" parent="." unique_id=1152929289 instance=ExtResource("4_kp5ch")]
+transform = Transform3D(0.7994855, 0, 0.60068536, 0, 1, 0, -0.60068536, 0, 0.7994855, 6.451924, 1.1473365, -55.432827)
+
+[node name="Target2" parent="." unique_id=942544010 instance=ExtResource("4_kp5ch")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.993628, 1.168762, -51.3966)
+
+[node name="Target3" parent="." unique_id=202090879 instance=ExtResource("4_kp5ch")]
+transform = Transform3D(1.7018934, 0, -2.4705386, 0, 3, 0, 2.4705386, 0, 1.7018934, 4.7201967, 1.2773781, -45.63467)
+
+[node name="Target4" parent="." unique_id=1556496467 instance=ExtResource("4_kp5ch")]
+transform = Transform3D(0.3061135, 0, 4.9906206, 0, 5, 0, -4.9906206, 0, 0.3061135, 1.8895218, 1.4754794, -58.39018)
