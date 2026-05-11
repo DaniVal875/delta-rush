@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://caj6l7u8iwwti"]
 
-[ext_resource type="Script" uid="uid://dn3ryisdh2gfo" path="res://delta-rush/Arma/Scenes/target.gd" id="1_gkxng"]
+[ext_resource type="Script" uid="uid://dn3ryisdh2gfo" path="res://delta-rush/Arma/Scripts/target.gd" id="1_gkxng"]
 [ext_resource type="PackedScene" uid="uid://crts3x20q5snj" path="res://delta-rush/Arma/Blaster Pack/target-large.glb" id="1_kgvdr"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kgvdr"]
@@ -8,6 +8,8 @@ height = 0.1
 radius = 0.17
 
 [node name="Target" type="StaticBody3D" unique_id=1152929289]
+collision_layer = 8
+collision_mask = 10
 script = ExtResource("1_gkxng")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1164166270]
