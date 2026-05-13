@@ -13,6 +13,7 @@ radius = 0.4
 
 [node name="Player" type="CharacterBody3D" unique_id=1588911036 groups=["player"]]
 script = ExtResource("1_cah14")
+sensibilidad_raton = 0.001
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2003629892]
 mesh = SubResource("CapsuleMesh_5peec")

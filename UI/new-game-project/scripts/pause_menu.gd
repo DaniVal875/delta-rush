@@ -4,7 +4,8 @@ extends CanvasLayer
 @onready var btn_salir = $PauseMenu/ColorRect/VBoxContainer/btnSalirMenuPrincipal
 
 func _ready():
-	hide()
+	$PauseMenu.hide()
+	$Mira.show()
 	process_mode = Node.PROCESS_MODE_ALWAYS   # ← Muy importante
 
 	# Conectar botones de forma segura
@@ -22,15 +23,18 @@ func toggle_pause():
 	get_tree().paused = not paused
 	
 	if not paused:        # Si estaba sin pausar → ahora pausamos
-		show()
+		$PauseMenu.show()
+		$Mira.hide()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
-		hide()
+		$PauseMenu.hide()
+		$Mira.show()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_reanudar_pressed():
 	get_tree().paused = false
-	hide()
+	$PauseMenu.hide()
+	$Mira.show()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_salir_pressed():
