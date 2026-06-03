@@ -39,13 +39,20 @@ var estado_actual: EstadoMovimiento = EstadoMovimiento.SUELO
 @export var gravedad_correr_pared: float = 1.0 
 @export var angulo_inclinacion_camara: float = 0.25 
 
+@export_category("Impacto")
+@export var multiplicador_ralentizacion: float = 0.3  # 0.3 = reduce al 30% de velocidad
+@export var duracion_ralentizacion: float = 1.5       # Segundos que dura el efecto
+
 @onready var forma_parado: CollisionShape3D = $StandingShape
 @onready var forma_agachado: CollisionShape3D = $CrouchShape
 @onready var detector_techo: RayCast3D = $CeilingCheck 
 @onready var cabeza: Node3D = $Head
 @onready var camara: Camera3D = $Head/Camera3D
+@onready var arma: Weapon = $Head/Camera3D/WeaponHolder/Weapon  # ← agregar esta línea
 @onready var rayo_izquierdo: RayCast3D = $WallRayLeft
 @onready var rayo_derecho: RayCast3D = $WallRayRight
+
+
 
 var gravedad: float = ProjectSettings.get_setting("physics/3d/default_gravity") * multiplicador_gravedad
 var normal_pared: Vector3 = Vector3.ZERO
@@ -56,6 +63,12 @@ var velocidad_actual: float = velocidad_caminar
 var doble_salto_usado: bool = false 
 var temporizador_correr_pared: float = 0.0 
 var esta_corriendo: bool = false 
+
+#var _tiempo_entre_disparos: float = 0.1   # 10 disparos por segundo, ajústalo
+#var _temporizador_disparo: float = 0.0
+
+var _temporizador_impacto: float = 0.0
+var _esta_ralentizado: bool = false
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -70,6 +83,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		rotate_y(-event.relative.x * sens_actual)
 		cabeza.rotate_x(-event.relative.y * sens_actual)
 		cabeza.rotation.x = clamp(cabeza.rotation.x, -PI/2, PI/2)
+		
+	
 
 func _physics_process(delta: float) -> void:
 	var direccion_input := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
@@ -85,8 +100,14 @@ func _physics_process(delta: float) -> void:
 	_manejar_postura(delta) 
 	_manejar_inclinacion_camara(delta)
 	_manejar_apuntado(delta)
+	_manejar_impacto(delta)
 	
 	move_and_slide()
+	
+	# Disparo automático al mantener pulsado
+	if Input.is_action_pressed("shoot"):
+		arma.shoot(camara.global_position, camara.global_transform.basis, delta)
+
 
 func _manejar_camara_mando(delta: float) -> void:
 	var direccion_mirada := Input.get_vector("look_left", "look_right", "look_up", "look_down")
@@ -137,6 +158,7 @@ func _puede_correr_pared() -> bool:
 	if not Input.is_action_pressed("move_forward"): return false
 	if temporizador_correr_pared >= tiempo_maximo_correr_pared: return false
 	if Input.is_action_pressed("crouch"): return false 
+	if _esta_ralentizado: return false
 	
 	if rayo_izquierdo.is_colliding():
 		normal_pared = rayo_izquierdo.get_collision_normal()
@@ -217,7 +239,8 @@ func _manejar_movimiento(direccion_input: Vector2, delta: float) -> void:
 		
 	else:
 		var direccion := (transform.basis * Vector3(direccion_input.x, 0, direccion_input.y)).normalized()
-		var velocidad_objetivo_esperada = velocidad_correr if esta_corriendo else velocidad_caminar
+		var factor := multiplicador_ralentizacion if _esta_ralentizado else 1.0
+		var velocidad_objetivo_esperada = (velocidad_correr if esta_corriendo else velocidad_caminar) * factor
 		
 		var aceleracion = 5.0 if velocidad_actual > velocidad_objetivo_esperada else 15.0
 		velocidad_actual = lerpf(velocidad_actual, velocidad_objetivo_esperada, aceleracion * delta)
@@ -259,3 +282,15 @@ func _manejar_apuntado(delta: float) -> void:
 	var fov_objetivo = fov_apuntar if esta_apuntando else fov_normal
 	
 	camara.fov = lerpf(camara.fov, fov_objetivo, velocidad_apuntar * delta)
+
+# Nuevas funciones para recibir el impacto de balas
+func _manejar_impacto(delta: float) -> void:
+	if not _esta_ralentizado:
+		return
+	_temporizador_impacto -= delta
+	if _temporizador_impacto <= 0.0:
+		_esta_ralentizado = false
+
+func recibir_impacto() -> void:
+	_temporizador_impacto = duracion_ralentizacion
+	_esta_ralentizado = true

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ouimfvb2an0v"]
+
+[ext_resource type="Script" uid="uid://dnuinaapyvxw7" path="res://delta-rush/Arma/Scripts2/bullet_trail.gd" id="1_j3jrk"]
+
+[node name="BulletTrail" type="Node3D" unique_id=160467908]
+script = ExtResource("1_j3jrk")
+emission_energy = 12.0
+lifetime = 0.1
+fade_speed = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1008675287]
+
+[node name="Timer" type="Timer" parent="." unique_id=278573313]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

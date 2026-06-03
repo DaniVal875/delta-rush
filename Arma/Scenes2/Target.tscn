@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dfrtntmw81jad"]
+
+[ext_resource type="Script" uid="uid://dr4l54hgaev2p" path="res://delta-rush/Arma/Scripts2/target.gd" id="1_ecb62"]
+[ext_resource type="PackedScene" uid="uid://crts3x20q5snj" path="res://delta-rush/Arma/Blaster Pack/target-large.glb" id="1_kgvdr"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kgvdr"]
+height = 0.1
+radius = 0.17
+
+[node name="Target" type="StaticBody3D" unique_id=1152929289]
+collision_layer = 8
+collision_mask = 10
+script = ExtResource("1_ecb62")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1164166270]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_kgvdr")
+
+[node name="target-large2" parent="." unique_id=455261692 instance=ExtResource("1_kgvdr")]
+
+[node name="GreenLight" type="OmniLight3D" parent="." unique_id=375807667]
+light_color = Color(0.23377645, 0.629519, 0, 1)
+omni_range = 1.0
+
+[node name="ResetTimer" type="Timer" parent="." unique_id=1745214461]
+wait_time = 3.0
+one_shot = true

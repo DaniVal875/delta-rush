@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://djcy8de5j7nby"]
+
+[ext_resource type="Script" uid="uid://dn31fb7xkxy5t" path="res://delta-rush/Arma/Enemies/ufo_projectile.gd" id="1_3u5i1"]
+[ext_resource type="PackedScene" uid="uid://dd3d5x0iohlxs" path="res://delta-rush/Arma/Enemies/Model/uttvm-projectile/source/UTTVM projectile.glb" id="1_bna1n"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bna1n"]
+radius = 0.1
+height = 1.41
+
+[node name="UfoProjectile" type="CharacterBody3D" unique_id=1259064045]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_3u5i1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1236140283]
+transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_bna1n")
+
+[node name="UfoProjectileModel" type="Node3D" parent="." unique_id=1830384863]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0, 0, 0)
+
+[node name="UTTVM projectile" parent="UfoProjectileModel" unique_id=1219162270 instance=ExtResource("1_bna1n")]
+
+[node name="Timer" type="Timer" parent="." unique_id=1596903747]
+one_shot = true

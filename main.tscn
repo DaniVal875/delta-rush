@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c52aagx3q2upc" path="res://delta-rush/Mapa/Escenas/Mapa.tscn" id="1_rsaiv"]
 [ext_resource type="PackedScene" uid="uid://d2af8p3xj072i" path="res://delta-rush/Entidades/Player/player.tscn" id="2_rf02o"]
 [ext_resource type="PackedScene" uid="uid://d1ysyvrrsll4t" path="res://delta-rush/UI/new-game-project/escenas/PauseMenu.tscn" id="3_rf02o"]
-[ext_resource type="PackedScene" uid="uid://caj6l7u8iwwti" path="res://delta-rush/Arma/Scenes/Target.tscn" id="4_kp5ch"]
+[ext_resource type="PackedScene" uid="uid://dfrtntmw81jad" path="res://delta-rush/Arma/Scenes2/Target.tscn" id="5_5pebj"]
+[ext_resource type="PackedScene" uid="uid://caenr3uajqy6w" path="res://delta-rush/Arma/Enemies/Ufo.tscn" id="5_o3h6t"]
 
 [node name="Main" type="Node3D" unique_id=16412285]
 
@@ -14,14 +15,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2440374, 0)
 
 [node name="CanvasLayer" parent="." unique_id=1773230764 instance=ExtResource("3_rf02o")]
 
-[node name="Target" parent="." unique_id=1152929289 instance=ExtResource("4_kp5ch")]
-transform = Transform3D(0.7994855, 0, 0.60068536, 0, 1, 0, -0.60068536, 0, 0.7994855, 6.451924, 1.1473365, -55.432827)
+[node name="Target" parent="." unique_id=1152929289 instance=ExtResource("5_5pebj")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 13.424974, 1.1039772, -50.882477)
 
-[node name="Target2" parent="." unique_id=942544010 instance=ExtResource("4_kp5ch")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.993628, 1.168762, -51.3966)
+[node name="Target2" parent="." unique_id=381335115 instance=ExtResource("5_5pebj")]
+transform = Transform3D(1.4197562, 0, 1.4086491, 0, 2, 0, -1.4086491, 0, 1.4197562, 6.5213413, 1.0046751, -59.151474)
 
-[node name="Target3" parent="." unique_id=202090879 instance=ExtResource("4_kp5ch")]
-transform = Transform3D(1.7018934, 0, -2.4705386, 0, 3, 0, 2.4705386, 0, 1.7018934, 4.7201967, 1.2773781, -45.63467)
+[node name="Target3" parent="." unique_id=445295500 instance=ExtResource("5_5pebj")]
+transform = Transform3D(-0.3118511, 0, 0.390831, 0, 0.5, 0, -0.390831, 0, -0.3118511, 1.3056271, 1.2204804, -59.758526)
 
-[node name="Target4" parent="." unique_id=1556496467 instance=ExtResource("4_kp5ch")]
-transform = Transform3D(0.3061135, 0, 4.9906206, 0, 5, 0, -4.9906206, 0, 0.3061135, 1.8895218, 1.4754794, -58.39018)
+[node name="Ufo" parent="." unique_id=1670745300 instance=ExtResource("5_o3h6t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.26898, 5.0666437, 2.5295413)

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://caenr3uajqy6w"]
+
+[ext_resource type="PackedScene" uid="uid://x4w2fw8hhy81" path="res://delta-rush/Arma/Enemies/Model/ufo.glb" id="1_4dteo"]
+[ext_resource type="Script" uid="uid://blfcqop0se31u" path="res://delta-rush/Arma/Enemies/ufo.gd" id="1_cv4g5"]
+[ext_resource type="Script" uid="uid://c0wvncwfavlwg" path="res://delta-rush/Arma/Enemies/health_component.gd" id="2_cv4g5"]
+[ext_resource type="PackedScene" uid="uid://djcy8de5j7nby" path="res://delta-rush/Arma/Enemies/UfoProjectile.tscn" id="2_jmb8x"]
+[ext_resource type="PackedScene" uid="uid://32yo4883612n" path="res://delta-rush/Arma/Enemies/Explosion.tscn" id="3_tqemm"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cv4g5"]
+height = 1.0
+radius = 1.4
+
+[node name="Ufo" type="CharacterBody3D" unique_id=1670745300]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_cv4g5")
+rango_disparo = 22.0
+cadencia_disparo = 2.5
+spread_disparo = 0.03
+projectile_scene = ExtResource("2_jmb8x")
+velocidad_maxima = 7.0
+aceleracion = 3.0
+friccion = 2.0
+rango_persecucion = 30.0
+rango_detenerse = 10.0
+altura_vuelo = 10.0
+explosion_scene = ExtResource("3_tqemm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2141521265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.114064455, 0)
+shape = SubResource("CylinderShape3D_cv4g5")
+
+[node name="UfoModel" type="Node3D" parent="." unique_id=592890902]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+
+[node name="Sketchfab_Scene" parent="UfoModel" unique_id=323472072 instance=ExtResource("1_4dteo")]
+
+[node name="HealthComponent" type="Node3D" parent="." unique_id=1152869026]
+script = ExtResource("2_cv4g5")
