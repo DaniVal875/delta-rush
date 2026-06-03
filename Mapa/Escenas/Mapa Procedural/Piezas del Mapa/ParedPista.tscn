@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3wkfkd2p4hts"]
+
+[ext_resource type="Texture2D" uid="uid://lg1va07ltdnr" path="res://Escenas/Mapa Procedural/Piezas del Mapa/Textura Ladrillos.png" id="1_iatbp"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_maxrj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rhm2"]
+albedo_color = Color(0.49411765, 0.31764707, 0, 1)
+albedo_texture = ExtResource("1_iatbp")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_maxrj"]
+points = PackedVector3Array(-0.50793654, -0.50793654, -0.007936508, 0.50793654, 0.50793654, 0.007936508, 0.50793654, 0.50793654, -0.007936508, -0.50793654, 0.50793654, 0.007936508, 0.50793654, -0.50793654, 0.007936508, 0.50793654, -0.50793654, -0.007936508, -0.50793654, 0.50793654, -0.007936508, -0.50793654, -0.50793654, 0.007936508)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10.7, 0, 0, 0, -40, 3.019916e-07, 0, -6.039832e-06, -2, 0, 20, 0)
+mesh = SubResource("QuadMesh_maxrj")
+surface_material_override/0 = SubResource("StandardMaterial3D_7rhm2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(0.984, 0, 0, 0, 0.995, 0, 0, 0, 0.995, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_maxrj")

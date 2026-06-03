@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://c52aagx3q2upc"]
 
+<<<<<<< HEAD
+[ext_resource type="MeshLibrary" uid="uid://cdqx2tiatv4bh" path="res://Mapa Piezas.tres" id="1_lbiw5"]
+[ext_resource type="Script" uid="uid://bgyqdso2262d7" path="res://Scripts/paredes.gd" id="2_qgw4m"]
+[ext_resource type="PackedScene" uid="uid://dkxck71yq3jah" path="res://Escenas/Jugador.tscn" id="3_622qf"]
+=======
 [ext_resource type="MeshLibrary" uid="uid://cdqx2tiatv4bh" path="res://delta-rush/Mapa/Mapa Piezas.tres" id="1_lbiw5"]
 [ext_resource type="Script" uid="uid://bgyqdso2262d7" path="res://delta-rush/Mapa/Scripts/paredes.gd" id="2_qgw4m"]
+>>>>>>> 1d2b60e65dee2c8fc9eb89f97f2e19c298f54f78
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_habko"]
 

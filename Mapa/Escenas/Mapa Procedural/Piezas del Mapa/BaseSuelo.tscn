@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://qnmvddugfibl"]
+
+[ext_resource type="Texture2D" uid="uid://byhyr0fokprka" path="res://Escenas/Mapa Procedural/Piezas del Mapa/Textura de Suelo.jpg" id="1_00534"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_fiyo3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nulci"]
+albedo_color = Color(0.55815613, 0.55815613, 0.55815613, 1)
+albedo_texture = ExtResource("1_00534")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wptq8"]
+points = PackedVector3Array(-0.50793654, -0.50793654, -0.007936508, 0.50793654, 0.50793654, 0.007936508, 0.50793654, 0.50793654, -0.007936508, -0.50793654, 0.50793654, 0.007936508, 0.50793654, -0.50793654, 0.007936508, 0.50793654, -0.50793654, -0.007936508, -0.50793654, 0.50793654, -0.007936508, -0.50793654, -0.50793654, 0.007936508)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(11, 0, 0, 0, -1.3157128e-06, 2, 0, -30.1, -8.742278e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_fiyo3")
+surface_material_override/0 = SubResource("StandardMaterial3D_nulci")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(0.984, 0, 0, 0, 0.995, 0, 0, 0, 0.995, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_wptq8")
