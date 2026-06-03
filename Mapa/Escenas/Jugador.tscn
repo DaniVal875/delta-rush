@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dkxck71yq3jah"]
 
-[ext_resource type="Script" uid="uid://yuak5huf5p1" path="res://camara.gd" id="1_43k7d"]
-[ext_resource type="Script" uid="uid://b7efbffto3epv" path="res://jugador.gd" id="1_w2bje"]
+[ext_resource type="Script" uid="uid://yuak5huf5p1" path="res://delta-rush/Mapa/Scripts/camara.gd" id="1_43k7d"]
+[ext_resource type="Script" uid="uid://b7efbffto3epv" path="res://delta-rush/Mapa/Scripts/jugador.gd" id="1_w2bje"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pclxs"]
 
@@ -29,3 +29,12 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 3.1201618, 0, 0, 0, 1.5296556, 0.0045158267, 0.6944959, 0.4879595)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 324.0
+offset_bottom = 42.0
+text = "Coordenadas - ( X: 100  Y: 10  Z: 300 )"
+horizontal_alignment = 1
+vertical_alignment = 1

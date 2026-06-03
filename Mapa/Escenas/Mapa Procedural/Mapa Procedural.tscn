@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://p8bkxgog1lwe"]
+
+[ext_resource type="Script" uid="uid://d27wos4n55fm8" path="res://delta-rush/Mapa/Escenas/Mapa Procedural/Generacion Procedural.gd" id="1_ydogu"]
+[ext_resource type="PackedScene" uid="uid://dkxck71yq3jah" path="res://delta-rush/Mapa/Escenas/Jugador.tscn" id="2_a6t45"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_ydogu")
+
+[node name="CharacterBody3D2" parent="." instance=ExtResource("2_a6t45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.084, 1.017, -306.839)
