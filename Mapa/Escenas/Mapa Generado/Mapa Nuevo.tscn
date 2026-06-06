@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://cyk76f6pk8oyl" path="res://delta-rush/Mapa/Escenas/Mapa Procedural/Piezas del Mapa/ParedInterna.tscn" id="3_6pc2n"]
 [ext_resource type="PackedScene" uid="uid://qnmvddugfibl" path="res://delta-rush/Mapa/Escenas/Mapa Procedural/Piezas del Mapa/BaseSuelo.tscn" id="4_8yfyb"]
 [ext_resource type="PackedScene" uid="uid://trb1wmt62k6u" path="res://delta-rush/Mapa/Escenas/Mapa Procedural/Piezas del Mapa/BaseTecho.tscn" id="5_kdq3c"]
-[ext_resource type="PackedScene" uid="uid://dkxck71yq3jah" path="res://delta-rush/Mapa/Escenas/Jugador.tscn" id="6_ypqmi"]
 [ext_resource type="PackedScene" uid="uid://du23pmplmgm3u" path="res://delta-rush/Mapa/Escenas/Mapa Generado/Piezas de Decoracion.tscn" id="7_fuh3w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atd4l"]
@@ -2898,11 +2897,59 @@ transform = Transform3D(0.99764323, 0, 0.06861483, 0, 1, 0, -0.06861483, 0, 0.99
 [node name="@Node3D@85132" parent="Estructura Mapa" unique_id=503195883 instance=ExtResource("5_kdq3c")]
 transform = Transform3D(0.9994106, 0, 0.03432738, 0, 1, 0, -0.03432738, 0, 0.9994106, 10.469919, 0, -15.179749)
 
-[node name="CharacterBody3D" parent="." unique_id=638157690 instance=ExtResource("6_ypqmi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.659913, 1.0157936, 303.12265)
-
 [node name="Piezas de Decoracion" parent="." unique_id=1514210391 instance=ExtResource("7_fuh3w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.245472, 0, 273.27814)
+
+[node name="floor_376" parent="Piezas de Decoracion" index="180" unique_id=664348565]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -0.23274994, 2.0017762, -12.430237)
+
+[node name="floor_379" parent="Piezas de Decoracion" index="181" unique_id=212547498]
+transform = Transform3D(-100, 1.509958e-05, -1.4210855e-12, 0, 5.9604645e-06, 100, 1.509958e-05, 100, -1.1920929e-05, 1.8760376, 2, -18.749115)
+
+[node name="floor_380" parent="Piezas de Decoracion" index="182" unique_id=1599288191]
+transform = Transform3D(1.1920929e-05, -100, -1.4901161e-05, -2.9802322e-06, -1.1920929e-05, 99.99999, -100, -5.9604645e-06, 0, 3.9810867, 2, -14.535278)
+
+[node name="floor_381" parent="Piezas de Decoracion" index="183" unique_id=193091495]
+transform = Transform3D(1.1920929e-05, 100, 1.4901161e-05, 2.9802322e-06, -1.1920929e-05, 99.99999, 100, -5.9604645e-06, 0, -2.337799, 2, -16.644073)
+
+[node name="floor_382" parent="Piezas de Decoracion" index="184" unique_id=648627098]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -2.337799, 2, -16.644073)
+
+[node name="floor_385" parent="Piezas de Decoracion" index="185" unique_id=263228321]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -0.23014832, 2, -16.644073)
+
+[node name="floor_386" parent="Piezas de Decoracion" index="186" unique_id=621222627]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -0.23014832, 2.0026646, -18.749115)
+
+[node name="floor_387" parent="Piezas de Decoracion" index="187" unique_id=619531442]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -0.23014832, 2, -14.537872)
+
+[node name="floor_388" parent="Piezas de Decoracion" index="188" unique_id=2048963766]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 1.8760376, 2, -16.644073)
+
+[node name="floor_391" parent="Piezas de Decoracion" index="189" unique_id=1647545658]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -2.337799, 2, -14.537872)
+
+[node name="floor_384" parent="Piezas de Decoracion" index="190" unique_id=1414756703]
+transform = Transform3D(0, -100, -2.9802322e-06, -2.9802322e-06, 0, 100, -100, 2.9802322e-06, 0, -2.337799, 2.0026646, -14.537872)
+
+[node name="floor_375" parent="Piezas de Decoracion" index="191" unique_id=1265687812]
+transform = Transform3D(1.1920929e-05, 100, 1.4901161e-05, 2.9802322e-06, -1.1920929e-05, 99.99999, 100, -5.9604645e-06, 0, -0.23014832, 2, -18.749115)
+
+[node name="floor_383" parent="Piezas de Decoracion" index="192" unique_id=2005619069]
+transform = Transform3D(-100, 1.509958e-05, -1.4210855e-12, 0, 5.9604645e-06, 100, 1.509958e-05, 100, -1.1920929e-05, 3.9810867, 2.0008883, -16.64148)
+
+[node name="floor_389" parent="Piezas de Decoracion" index="193" unique_id=545021234]
+transform = Transform3D(0, -100, -2.9802322e-06, -2.9802322e-06, 0, 100, -100, 2.9802322e-06, 0, 1.8760414, 2.0008883, -12.431671)
+
+[node name="floor_374" parent="Piezas de Decoracion" index="194" unique_id=374830847]
+transform = Transform3D(100, 1.7484559e-05, 2.842171e-12, 0, -1.1920929e-05, 99.99999, 1.7484559e-05, -99.99999, -1.1920929e-05, -0.23014832, 2.0026646, -18.749115)
+
+[node name="floor_377" parent="Piezas de Decoracion" index="195" unique_id=202188602]
+transform = Transform3D(1.7881393e-05, 100, 5.9604645e-06, -5.9604645e-06, -1.1920929e-05, 100.000015, 100, -2.682209e-05, 0, 3.9822273, 2.0026646, -16.644073)
+
+[node name="floor_378" parent="Piezas de Decoracion" index="196" unique_id=393953883]
+transform = Transform3D(-100, -2.3849773e-06, -8.742278e-06, -8.742278e-06, 1.7881393e-05, 99.99999, -2.3849755e-06, 99.99999, -1.1920929e-05, 1.8760414, 2.0026646, -12.431671)
 
 [node name="barrel2" type="MeshInstance3D" parent="Piezas de Decoracion" unique_id=1441529559]
 transform = Transform3D(3219.5413, 0, 0, 0, -4.366768e-05, 3067.969, 0, -999, -0.00013410518, 329.46588, 0.6763622, -260.42224)
@@ -2912,57 +2959,6 @@ mesh = SubResource("ArrayMesh_esbfv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Piezas de Decoracion/barrel2/StaticBody3D" unique_id=384132908]
 shape = SubResource("ConvexPolygonShape3D_ui44m")
-
-[node name="floor_376" parent="Piezas de Decoracion" index="181" unique_id=1869876060]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -0.23274994, 2.0017762, -12.430237)
-
-[node name="floor_379" parent="Piezas de Decoracion" index="182" unique_id=2113926016]
-transform = Transform3D(-100, 1.509958e-05, -1.4210855e-12, 0, 5.9604645e-06, 100, 1.509958e-05, 100, -1.1920929e-05, 1.8760376, 2, -18.749115)
-
-[node name="floor_380" parent="Piezas de Decoracion" index="183" unique_id=38274424]
-transform = Transform3D(1.1920929e-05, -100, -1.4901161e-05, -2.9802322e-06, -1.1920929e-05, 99.99999, -100, -5.9604645e-06, 0, 3.9810867, 2, -14.535278)
-
-[node name="floor_381" parent="Piezas de Decoracion" index="184" unique_id=2093477349]
-transform = Transform3D(1.1920929e-05, 100, 1.4901161e-05, 2.9802322e-06, -1.1920929e-05, 99.99999, 100, -5.9604645e-06, 0, -2.337799, 2, -16.644073)
-
-[node name="floor_382" parent="Piezas de Decoracion" index="185" unique_id=768154616]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -2.337799, 2, -16.644073)
-
-[node name="floor_385" parent="Piezas de Decoracion" index="186" unique_id=329834716]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -0.23014832, 2, -16.644073)
-
-[node name="floor_386" parent="Piezas de Decoracion" index="187" unique_id=1160578827]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -0.23014832, 2.0026646, -18.749115)
-
-[node name="floor_387" parent="Piezas de Decoracion" index="188" unique_id=1060516380]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -0.23014832, 2, -14.537872)
-
-[node name="floor_388" parent="Piezas de Decoracion" index="189" unique_id=1583151235]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 1.8760376, 2, -16.644073)
-
-[node name="floor_391" parent="Piezas de Decoracion" index="190" unique_id=1661450027]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -2.337799, 2, -14.537872)
-
-[node name="floor_384" parent="Piezas de Decoracion" index="191" unique_id=2133493396]
-transform = Transform3D(0, -100, -2.9802322e-06, -2.9802322e-06, 0, 100, -100, 2.9802322e-06, 0, -2.337799, 2.0026646, -14.537872)
-
-[node name="floor_375" parent="Piezas de Decoracion" index="192" unique_id=552896836]
-transform = Transform3D(1.1920929e-05, 100, 1.4901161e-05, 2.9802322e-06, -1.1920929e-05, 99.99999, 100, -5.9604645e-06, 0, -0.23014832, 2, -18.749115)
-
-[node name="floor_383" parent="Piezas de Decoracion" index="193" unique_id=98384659]
-transform = Transform3D(-100, 1.509958e-05, -1.4210855e-12, 0, 5.9604645e-06, 100, 1.509958e-05, 100, -1.1920929e-05, 3.9810867, 2.0008883, -16.64148)
-
-[node name="floor_389" parent="Piezas de Decoracion" index="194" unique_id=620528794]
-transform = Transform3D(0, -100, -2.9802322e-06, -2.9802322e-06, 0, 100, -100, 2.9802322e-06, 0, 1.8760414, 2.0008883, -12.431671)
-
-[node name="floor_374" parent="Piezas de Decoracion" index="195" unique_id=1385029872]
-transform = Transform3D(100, 1.7484559e-05, 2.842171e-12, 0, -1.1920929e-05, 99.99999, 1.7484559e-05, -99.99999, -1.1920929e-05, -0.23014832, 2.0026646, -18.749115)
-
-[node name="floor_377" parent="Piezas de Decoracion" index="196" unique_id=2089314518]
-transform = Transform3D(1.7881393e-05, 100, 5.9604645e-06, -5.9604645e-06, -1.1920929e-05, 100.000015, 100, -2.682209e-05, 0, 3.9822273, 2.0026646, -16.644073)
-
-[node name="floor_378" parent="Piezas de Decoracion" index="197" unique_id=842464341]
-transform = Transform3D(-100, -2.3849773e-06, -8.742278e-06, -8.742278e-06, 1.7881393e-05, 99.99999, -2.3849755e-06, 99.99999, -1.1920929e-05, 1.8760414, 2.0026646, -12.431671)
 
 [node name="floor_054" type="MeshInstance3D" parent="Piezas de Decoracion" unique_id=1053083509]
 transform = Transform3D(2345.2842, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -93.28433, 0, -30.928955)

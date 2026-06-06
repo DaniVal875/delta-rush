@@ -1,28 +1,29 @@
 [gd_scene format=3 uid="uid://d3redosx4k4j6"]
 
-[ext_resource type="PackedScene" uid="uid://c52aagx3q2upc" path="res://delta-rush/Mapa/Escenas/Mapa.tscn" id="1_rsaiv"]
+[ext_resource type="PackedScene" uid="uid://b7gha3ghs4au6" path="res://delta-rush/Mapa/Escenas/Mapa Generado/Mapa Nuevo.tscn" id="1_rsaiv"]
 [ext_resource type="PackedScene" uid="uid://d2af8p3xj072i" path="res://delta-rush/Entidades/Player/player.tscn" id="2_rf02o"]
 [ext_resource type="PackedScene" uid="uid://d1ysyvrrsll4t" path="res://delta-rush/UI/new-game-project/escenas/PauseMenu.tscn" id="3_rf02o"]
-[ext_resource type="PackedScene" uid="uid://dfrtntmw81jad" path="res://delta-rush/Arma/Scenes2/Target.tscn" id="5_5pebj"]
-[ext_resource type="PackedScene" uid="uid://caenr3uajqy6w" path="res://delta-rush/Arma/Enemies/Ufo.tscn" id="5_o3h6t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rf02o"]
+sky_curve = 0.7135259
+
+[sub_resource type="Sky" id="Sky_57gmc"]
+sky_material = SubResource("ProceduralSkyMaterial_rf02o")
+
+[sub_resource type="Environment" id="Environment_kp5ch"]
+background_mode = 2
+sky = SubResource("Sky_57gmc")
+ambient_light_source = 3
+adjustment_enabled = true
 
 [node name="Main" type="Node3D" unique_id=16412285]
 
 [node name="Node3D" parent="." unique_id=2133891757 instance=ExtResource("1_rsaiv")]
 
-[node name="Player" parent="." unique_id=1588911036 instance=ExtResource("2_rf02o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2440374, 0)
-
 [node name="CanvasLayer" parent="." unique_id=1773230764 instance=ExtResource("3_rf02o")]
 
-[node name="Target" parent="." unique_id=1152929289 instance=ExtResource("5_5pebj")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 13.424974, 1.1039772, -50.882477)
+[node name="Player" parent="." unique_id=1588911036 instance=ExtResource("2_rf02o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.668819, 2.40094, 303.9822)
 
-[node name="Target2" parent="." unique_id=381335115 instance=ExtResource("5_5pebj")]
-transform = Transform3D(1.4197562, 0, 1.4086491, 0, 2, 0, -1.4086491, 0, 1.4197562, 6.5213413, 1.0046751, -59.151474)
-
-[node name="Target3" parent="." unique_id=445295500 instance=ExtResource("5_5pebj")]
-transform = Transform3D(-0.3118511, 0, 0.390831, 0, 0.5, 0, -0.390831, 0, -0.3118511, 1.3056271, 1.2204804, -59.758526)
-
-[node name="Ufo" parent="." unique_id=1670745300 instance=ExtResource("5_o3h6t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.26898, 5.0666437, 2.5295413)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1231408072]
+environment = SubResource("Environment_kp5ch")
