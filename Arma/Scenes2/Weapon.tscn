@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bnqu2j6kvnwbw"]
 
 [ext_resource type="Script" uid="uid://cl60byoqp6yj8" path="res://delta-rush/Arma/Scripts2/weapon.gd" id="1_56cli"]
-[ext_resource type="PackedScene" uid="uid://dd6ka0n30bjs4" path="res://delta-rush/Arma/Blaster Pack/blaster-f.glb" id="1_estta"]
+[ext_resource type="PackedScene" uid="uid://bnep4jtrvqfhm" path="res://delta-rush/Arma/Blaster Pack/blaster-d.glb" id="2_56cli"]
 
 [node name="Weapon" type="Node3D" unique_id=502482498]
 script = ExtResource("1_56cli")
@@ -11,8 +11,7 @@ dano = 10.0
 
 [node name="GunModel" type="Node3D" parent="." unique_id=2056862969]
 
-[node name="Gun" parent="GunModel" unique_id=148679730 instance=ExtResource("1_estta")]
-transform = Transform3D(0.9101133, 0, 0.41435972, 0.00874275, 0.99977756, -0.019202858, -0.41426742, 0.021099463, 0.90991056, 0.5289288, -0.12881082, -0.78618824)
-
 [node name="Muzzle" type="Marker3D" parent="GunModel" unique_id=255814937]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28263968, -0.061901897, -1.3250092)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0009838939, 0.04910475, -0.4446531)
+
+[node name="blaster-d2" parent="GunModel" unique_id=524075569 instance=ExtResource("2_56cli")]
