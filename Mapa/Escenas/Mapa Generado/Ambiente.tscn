@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj1x82vt836vl"]
+
+[sub_resource type="Environment" id="Environment_dfktb"]
+fog_enabled = true
+
+[node name="Ambiente" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dfktb")
