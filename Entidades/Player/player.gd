@@ -10,7 +10,6 @@ var estado_actual: EstadoMovimiento = EstadoMovimiento.SUELO
 @export var velocidad_correr: float = 14.0
 @export var velocidad_agachado: float = 2.0 
 @export var sensibilidad_raton: float = 0.002
-@export var sensibilidad_mando: float = 3.0 
 
 @export_category("Apuntar")
 @export var fov_normal: float = 75.0 
@@ -52,8 +51,6 @@ var estado_actual: EstadoMovimiento = EstadoMovimiento.SUELO
 @onready var rayo_izquierdo: RayCast3D = $WallRayLeft
 @onready var rayo_derecho: RayCast3D = $WallRayRight
 
-
-
 var gravedad: float = ProjectSettings.get_setting("physics/3d/default_gravity") * multiplicador_gravedad
 var normal_pared: Vector3 = Vector3.ZERO
 var corriendo_pared_izquierda: bool = false
@@ -84,15 +81,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		cabeza.rotate_x(-event.relative.y * sens_actual)
 		cabeza.rotation.x = clamp(cabeza.rotation.x, -PI/2, PI/2)
 		
-	
-
 func _physics_process(delta: float) -> void:
 	var direccion_input := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	
 	if estado_actual == EstadoMovimiento.CORRER_PARED:
 		temporizador_correr_pared += delta
 
-	_manejar_camara_mando(delta)
 	_actualizar_estado()
 	_manejar_gravedad(delta)
 	_manejar_saltos()
@@ -107,18 +101,6 @@ func _physics_process(delta: float) -> void:
 	# Disparo automático al mantener pulsado
 	if Input.is_action_pressed("shoot"):
 		arma.shoot(camara.global_position, camara.global_transform.basis, delta)
-
-
-func _manejar_camara_mando(delta: float) -> void:
-	var direccion_mirada := Input.get_vector("look_left", "look_right", "look_up", "look_down")
-	if direccion_mirada != Vector2.ZERO:
-		var sens_actual = sensibilidad_mando
-		if Input.is_action_pressed("aim"):
-			sens_actual *= multiplicador_sensibilidad_apuntar
-			
-		rotate_y(-direccion_mirada.x * sens_actual * delta)
-		cabeza.rotate_x(-direccion_mirada.y * sens_actual * delta)
-		cabeza.rotation.x = clamp(cabeza.rotation.x, -PI/2, PI/2)
 
 func _actualizar_estado() -> void:
 	if is_on_floor():
