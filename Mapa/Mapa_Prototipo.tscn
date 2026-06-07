@@ -2,16 +2,17 @@
 
 [ext_resource type="Script" uid="uid://cyho3xutg8yca" path="res://delta-rush/Mapa/mapa_prototipo.gd" id="1_41rhg"]
 [ext_resource type="PackedScene" uid="uid://d2af8p3xj072i" path="res://delta-rush/Entidades/Player/player.tscn" id="2_41rhg"]
+[ext_resource type="PackedScene" uid="uid://dfrtntmw81jad" path="res://delta-rush/Arma/Scenes2/Target.tscn" id="3_tarf2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uia42"]
 sky_curve = 0.7135259
 
-[sub_resource type="Sky" id="Sky_57gmc"]
+[sub_resource type="Sky" id="Sky_h13y6"]
 sky_material = SubResource("ProceduralSkyMaterial_uia42")
 
 [sub_resource type="Environment" id="Environment_41rhg"]
 background_mode = 2
-sky = SubResource("Sky_57gmc")
+sky = SubResource("Sky_h13y6")
 ambient_light_source = 3
 adjustment_enabled = true
 
@@ -2775,3 +2776,6 @@ shape = SubResource("ConcavePolygonShape3D_uia42")
 
 [node name="Player" parent="." unique_id=1588911036 instance=ExtResource("2_41rhg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Target" parent="." unique_id=1152929289 instance=ExtResource("3_tarf2")]
+transform = Transform3D(2.8640924, 0, 4.0984116, 0, 5, 0, -4.0984116, 0, 2.8640924, 0, 1.5008593, -5.3801928)

@@ -4,9 +4,8 @@
 
 [node name="BulletTrail" type="Node3D" unique_id=160467908]
 script = ExtResource("1_j3jrk")
-emission_energy = 12.0
-lifetime = 0.1
-fade_speed = 50.0
+color = Color(1, 0, 0.2, 1)
+lifetime = 0.2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1008675287]
 

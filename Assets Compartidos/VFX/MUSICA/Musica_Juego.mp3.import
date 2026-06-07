@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b5j0kgda534c"
+path="res://.godot/imported/Musica_Juego.mp3-bf18ae425028d05fa1b97b1c096a025d.mp3str"
+
+[deps]
+
+source_file="res://delta-rush/Assets Compartidos/VFX/MUSICA/Musica_Juego.mp3"
+dest_files=["res://.godot/imported/Musica_Juego.mp3-bf18ae425028d05fa1b97b1c096a025d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

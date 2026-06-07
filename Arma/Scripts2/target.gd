@@ -11,6 +11,7 @@ func on_bullet_hit(hit_position: Vector3, hit_normal: Vector3, dano: float) -> v
 	if is_active:
 		return
 	is_active = true
+	$ResetTimer.start()
 	$GreenLight.light_color = Color.GREEN
 
 func _ajustar_rango_luz() -> void:
@@ -32,3 +33,8 @@ func _ajustar_rango_luz() -> void:
 	tamanio *= global_transform.basis.get_scale().length() / sqrt(3.0)
 	
 	$GreenLight.omni_range = tamanio * 2.0
+
+
+func _on_reset_timer_timeout() -> void:
+	is_active = false
+	$GreenLight.light_color = Color.RED

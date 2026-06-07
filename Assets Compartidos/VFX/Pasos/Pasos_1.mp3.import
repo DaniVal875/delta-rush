@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cldw887iapslr"
+path="res://.godot/imported/Pasos_1.mp3-8c6545565e0504a650c103eaef4da0e1.mp3str"
+
+[deps]
+
+source_file="res://delta-rush/Assets Compartidos/VFX/Pasos/Pasos_1.mp3"
+dest_files=["res://.godot/imported/Pasos_1.mp3-8c6545565e0504a650c103eaef4da0e1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

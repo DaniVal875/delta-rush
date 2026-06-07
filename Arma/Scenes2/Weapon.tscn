@@ -2,16 +2,63 @@
 
 [ext_resource type="Script" uid="uid://cl60byoqp6yj8" path="res://delta-rush/Arma/Scripts2/weapon.gd" id="1_56cli"]
 [ext_resource type="PackedScene" uid="uid://bnep4jtrvqfhm" path="res://delta-rush/Arma/Blaster Pack/blaster-d.glb" id="2_56cli"]
+[ext_resource type="PackedScene" uid="uid://ouimfvb2an0v" path="res://delta-rush/Arma/Scenes2/BulletTrail.tscn" id="2_qxg8i"]
+[ext_resource type="AudioStream" uid="uid://dn6i6ntltftyk" path="res://delta-rush/Assets Compartidos/VFX/DISPAROS/Disparo2.wav" id="4_w4pxq"]
+
+[sub_resource type="Curve" id="Curve_56cli"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9797298, 0), -3.1746678, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qxg8i"]
+curve = SubResource("Curve_56cli")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w4pxq"]
+direction = Vector3(0, 0, -1)
+spread = 20.0
+initial_velocity_min = 3.0
+initial_velocity_max = 7.0
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_qxg8i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gb3en"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0.2, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_amnql"]
+material = SubResource("StandardMaterial3D_gb3en")
+size = Vector2(0.08, 0.08)
 
 [node name="Weapon" type="Node3D" unique_id=502482498]
 script = ExtResource("1_56cli")
-spread_radius = 0.005
-cadencia = 0.1
+bullet_trail_scene = ExtResource("2_qxg8i")
 dano = 10.0
+fuerza_retroceso_z = 0.07
+fuerza_levantamiento_x = 0.025
+tiempo_patada = 0.025
 
 [node name="GunModel" type="Node3D" parent="." unique_id=2056862969]
 
 [node name="Muzzle" type="Marker3D" parent="GunModel" unique_id=255814937]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0009838939, 0.04910475, -0.4446531)
 
+[node name="LuzFogonazo" type="OmniLight3D" parent="GunModel/Muzzle" unique_id=1739064797]
+light_color = Color(1, 0, 0.2, 1)
+light_energy = 0.6
+light_indirect_energy = 0.6
+
+[node name="Fogonazo" type="GPUParticles3D" parent="GunModel/Muzzle" unique_id=373063056]
+emitting = false
+amount = 11
+lifetime = 0.05
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_w4pxq")
+draw_pass_1 = SubResource("QuadMesh_amnql")
+
 [node name="blaster-d2" parent="GunModel" unique_id=524075569 instance=ExtResource("2_56cli")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=498881317]
+stream = ExtResource("4_w4pxq")
+volume_db = -10.035
+max_polyphony = 10

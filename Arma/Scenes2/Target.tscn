@@ -25,3 +25,5 @@ omni_range = 1.0
 [node name="ResetTimer" type="Timer" parent="." unique_id=1745214461]
 wait_time = 3.0
 one_shot = true
+
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

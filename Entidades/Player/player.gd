@@ -14,7 +14,7 @@ var estado_actual: EstadoMovimiento = EstadoMovimiento.SUELO
 
 @export_category("Apuntar")
 @export var fov_normal: float = 75.0 
-@export var fov_apuntar: float = 50.0    
+@export var fov_apuntar: float = 50.0   
 @export var velocidad_apuntar: float = 15.0  
 @export var multiplicador_sensibilidad_apuntar: float = 0.5 
 
@@ -48,11 +48,9 @@ var estado_actual: EstadoMovimiento = EstadoMovimiento.SUELO
 @onready var detector_techo: RayCast3D = $CeilingCheck 
 @onready var cabeza: Node3D = $Head
 @onready var camara: Camera3D = $Head/Camera3D
-@onready var arma: Weapon = $Head/Camera3D/WeaponHolder/Weapon  # ← agregar esta línea
+@onready var arma: Weapon = $Head/Camera3D/WeaponHolder/Weapon
 @onready var rayo_izquierdo: RayCast3D = $WallRayLeft
 @onready var rayo_derecho: RayCast3D = $WallRayRight
-
-
 
 var gravedad: float = ProjectSettings.get_setting("physics/3d/default_gravity") * multiplicador_gravedad
 var normal_pared: Vector3 = Vector3.ZERO
@@ -64,8 +62,7 @@ var doble_salto_usado: bool = false
 var temporizador_correr_pared: float = 0.0 
 var esta_corriendo: bool = false 
 
-#var _tiempo_entre_disparos: float = 0.1   # 10 disparos por segundo, ajústalo
-#var _temporizador_disparo: float = 0.0
+var ultima_pared_lado: int = 0  # 0 = ninguna, 1 = izquierda, 2 = derecha
 
 var _temporizador_impacto: float = 0.0
 var _esta_ralentizado: bool = false
@@ -84,8 +81,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		cabeza.rotate_x(-event.relative.y * sens_actual)
 		cabeza.rotation.x = clamp(cabeza.rotation.x, -PI/2, PI/2)
 		
-	
-
 func _physics_process(delta: float) -> void:
 	var direccion_input := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	
@@ -124,6 +119,7 @@ func _actualizar_estado() -> void:
 	if is_on_floor():
 		doble_salto_usado = false
 		temporizador_correr_pared = 0.0
+		ultima_pared_lado = 0
 		
 		var quiere_agacharse = Input.is_action_pressed("crouch")
 		var puede_pararse = not detector_techo.is_colliding()
@@ -156,20 +152,37 @@ func _establecer_estado(nuevo_estado: EstadoMovimiento) -> void:
 func _puede_correr_pared() -> bool:
 	if is_on_floor(): return false
 	if not Input.is_action_pressed("move_forward"): return false
-	if temporizador_correr_pared >= tiempo_maximo_correr_pared: return false
 	if Input.is_action_pressed("crouch"): return false 
 	if _esta_ralentizado: return false
 	
+	# 1. Detectar qué lado está colisionando en este frame
+	var lado_detectado: int = 0
+	var normal_detectada: Vector3 = Vector3.ZERO
+	
 	if rayo_izquierdo.is_colliding():
-		normal_pared = rayo_izquierdo.get_collision_normal()
-		corriendo_pared_izquierda = true
-		return true
+		lado_detectado = 1 # Izquierda
+		normal_detectada = rayo_izquierdo.get_collision_normal()
 	elif rayo_derecho.is_colliding():
-		normal_pared = rayo_derecho.get_collision_normal()
-		corriendo_pared_izquierda = false
-		return true
+		lado_detectado = 2 # Derecha
+		normal_detectada = rayo_derecho.get_collision_normal()
+	
+	# Si no está tocando ninguna pared, no puede correr
+	if lado_detectado == 0:
+		return false
 		
-	return false
+	# 2. SISTEMA DE ENCADENAMIENTO FRENÉTICO
+	if lado_detectado != ultima_pared_lado:
+		temporizador_correr_pared = 0.0
+		ultima_pared_lado = lado_detectado
+		
+	# 3. Validar si se le acabó el tiempo en ESTA pared
+	if temporizador_correr_pared >= tiempo_maximo_correr_pared:
+		return false
+		
+	# Si pasó todas las condiciones, aplicamos los datos para el movimiento
+	normal_pared = normal_detectada
+	corriendo_pared_izquierda = (lado_detectado == 1)
+	return true
 
 func _manejar_gravedad(delta: float) -> void:
 	if estado_actual in [EstadoMovimiento.SUELO, EstadoMovimiento.DESLIZARSE, EstadoMovimiento.AGACHADO]:
@@ -189,7 +202,6 @@ func _manejar_saltos() -> void:
 			var direccion_salto: Vector3 = normal_pared * velocidad_correr
 			velocity.x = direccion_salto.x
 			velocity.z = direccion_salto.z
-			temporizador_correr_pared = 0.0
 			
 		elif estado_actual in [EstadoMovimiento.DESLIZARSE, EstadoMovimiento.AGACHADO, EstadoMovimiento.SUELO]:
 			velocity.y = fuerza_salto
@@ -283,7 +295,6 @@ func _manejar_apuntado(delta: float) -> void:
 	
 	camara.fov = lerpf(camara.fov, fov_objetivo, velocidad_apuntar * delta)
 
-# Nuevas funciones para recibir el impacto de balas
 func _manejar_impacto(delta: float) -> void:
 	if not _esta_ralentizado:
 		return

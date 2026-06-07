@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chmy2ewban07w"
+path="res://.godot/imported/Colision_Disparo_Objetivo.wav-a00179ce6cd65758ec5002dbcd015f4f.sample"
+
+[deps]
+
+source_file="res://delta-rush/Assets Compartidos/VFX/COLISIONES/Colision_Disparo_Objetivo.wav"
+dest_files=["res://.godot/imported/Colision_Disparo_Objetivo.wav-a00179ce6cd65758ec5002dbcd015f4f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
