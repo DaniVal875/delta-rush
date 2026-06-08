@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bfn5omkg5cvv4"
+path="res://.godot/imported/Sonido Salto1.wav-51ff69b92bf44db249ce4dc528aa6308.sample"
+
+[deps]
+
+source_file="res://delta-rush/Assets Compartidos/VFX/Sonido Salto1.wav"
+dest_files=["res://.godot/imported/Sonido Salto1.wav-51ff69b92bf44db249ce4dc528aa6308.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -10,12 +10,13 @@
 height = 1.0
 radius = 1.4
 
-[node name="Ufo" type="CharacterBody3D" unique_id=1670745300]
+[node name="Ufo" type="CharacterBody3D" unique_id=1670745300 groups=["ovnis", "reiniciables"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_cv4g5")
+vida_maxima = 70.0
 rango_disparo = 22.0
-cadencia_disparo = 2.5
+cadencia_disparo = 1.5
 spread_disparo = 0.03
 projectile_scene = ExtResource("2_jmb8x")
 velocidad_maxima = 7.0

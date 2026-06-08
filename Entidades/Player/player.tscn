@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://d2af8p3xj072i"]
 
 [ext_resource type="Script" uid="uid://bxqvu0smaogp0" path="res://delta-rush/Entidades/Player/player.gd" id="1_cah14"]
-[ext_resource type="PackedScene" uid="uid://bnqu2j6kvnwbw" path="res://delta-rush/Arma/Scenes2/Weapon.tscn" id="2_ws3jc"]
+[ext_resource type="PackedScene" uid="uid://c8moa2d8ikete" path="res://delta-rush/Entidades/Player/camera_3d.tscn" id="2_v5aw0"]
+[ext_resource type="PackedScene" uid="uid://cjmvd3x0nq1yg" path="res://delta-rush/UI/ui_usuario.tscn" id="3_jbyhb"]
+[ext_resource type="AudioStream" uid="uid://cldw887iapslr" path="res://delta-rush/Assets Compartidos/VFX/Pasos/Pasos_1.mp3" id="4_jbyhb"]
+[ext_resource type="AudioStream" uid="uid://cnsagslcwxwft" path="res://delta-rush/Assets Compartidos/VFX/Aire Presurizado.wav" id="5_1rtl8"]
+[ext_resource type="AudioStream" uid="uid://bfn5omkg5cvv4" path="res://delta-rush/Assets Compartidos/VFX/Sonido Salto1.wav" id="6_bpvs6"]
+[ext_resource type="AudioStream" uid="uid://dm0dqn71au35a" path="res://delta-rush/Assets Compartidos/VFX/Sonido Salto2.wav" id="7_kor38"]
+[ext_resource type="AudioStream" uid="uid://dxdrgikpfkn2t" path="res://delta-rush/Assets Compartidos/VFX/Sonido de Deslizamiento de Tierra 2 - Efecto de Sonido.mp3" id="8_kor38"]
+[ext_resource type="AudioStream" uid="uid://l4e6ed2c8dql" path="res://delta-rush/Assets Compartidos/VFX/Voces/Impact_2.wav" id="9_bu0k4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5peec"]
 
@@ -15,7 +22,20 @@ radius = 0.4
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_cah14")
-duracion_ralentizacion = 5.0
+velocidad_caminar = 10.0
+velocidad_correr = 16.0
+sensibilidad_mando = 4.0
+fov_apuntar = 40.0
+velocidad_base_correr_pared = 18.0
+velocidad_maxima_correr_pared = 30.0
+aceleracion_correr_pared = 12.0
+tiempo_maximo_correr_pared = 4.0
+fuerza_salto = 20.0
+impulso_doble_salto = 25.0
+multiplicador_gravedad = 5.0
+gravedad_correr_pared = 1.3
+angulo_inclinacion_camara = 0.3
+duracion_ralentizacion = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2003629892]
 mesh = SubResource("CapsuleMesh_5peec")
@@ -30,15 +50,8 @@ shape = SubResource("SphereShape3D_cah14")
 [node name="Head" type="Node3D" parent="." unique_id=600079162]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Head" unique_id=214328194]
+[node name="Camera3D" parent="Head" unique_id=2036293192 instance=ExtResource("2_v5aw0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.24513865)
-
-[node name="WeaponHolder" type="Node3D" parent="Head/Camera3D" unique_id=708468419]
-transform = Transform3D(0.99798816, 0.012541271, 0.062147386, 0, 0.98024005, -0.1978113, -0.06340017, 0.19741334, 0.97826797, -0.06681192, -0.3359064, 0.18312097)
-
-[node name="Weapon" parent="Head/Camera3D/WeaponHolder" unique_id=502482498 instance=ExtResource("2_ws3jc")]
-transform = Transform3D(0.99547285, 0.01880128, 0.093168445, -0.018801287, 0.9998229, -0.0008777231, -0.09316845, -0.0008779615, 0.99564993, 0.34140965, -0.054025277, -0.63373387)
-cadencia = 0.12
 
 [node name="WallRayLeft" type="RayCast3D" parent="." unique_id=35938657]
 target_position = Vector3(-0.8, 0, 0)
@@ -49,3 +62,30 @@ target_position = Vector3(0.8, 0, 0)
 [node name="CeilingCheck" type="RayCast3D" parent="." unique_id=1875871931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22804111, 0)
 target_position = Vector3(0, 1.2, 0)
+
+[node name="UI_Usuario" parent="." unique_id=1788526880 instance=ExtResource("3_jbyhb")]
+
+[node name="Sonidos" type="Node3D" parent="." unique_id=1012246636]
+
+[node name="SonidoPasos" type="AudioStreamPlayer" parent="Sonidos" unique_id=1253752640]
+stream = ExtResource("4_jbyhb")
+volume_db = 2.0
+
+[node name="SonidoAirePared" type="AudioStreamPlayer" parent="Sonidos" unique_id=2120432126]
+stream = ExtResource("5_1rtl8")
+volume_db = -10.0
+
+[node name="SonidoSaltoNormal" type="AudioStreamPlayer" parent="Sonidos" unique_id=2133995753]
+stream = ExtResource("6_bpvs6")
+volume_db = 14.0
+
+[node name="SonidoSaltoImpulso" type="AudioStreamPlayer" parent="Sonidos" unique_id=798358822]
+stream = ExtResource("7_kor38")
+volume_db = 14.0
+
+[node name="SonidoDeslizamiento" type="AudioStreamPlayer" parent="Sonidos" unique_id=1083731976]
+stream = ExtResource("8_kor38")
+volume_db = -5.0
+
+[node name="SonidoGolpe" type="AudioStreamPlayer" parent="Sonidos" unique_id=2076468489]
+stream = ExtResource("9_bu0k4")

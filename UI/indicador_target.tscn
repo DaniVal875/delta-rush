@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://buaqmpsivynmj"]
+
+[ext_resource type="Texture2D" uid="uid://mmie1ckqsf8b" path="res://delta-rush/Assets Compartidos/892554.png" id="1_imfmq"]
+
+[node name="IndicadorTarget" type="Control" unique_id=720199242]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Icono" type="TextureRect" parent="." unique_id=1801109884]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+rotation = 1.5707964
+pivot_offset = Vector2(32, 32)
+mouse_filter = 2
+texture = ExtResource("1_imfmq")
+expand_mode = 1

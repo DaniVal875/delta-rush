@@ -1,9 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj1x82vt836vl"]
+[gd_scene format=3 uid="uid://dj1x82vt836vl"]
 
-[sub_resource type="Environment" id="Environment_dfktb"]
-fog_enabled = true
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dfktb"]
+sky_curve = 0.7135259
 
-[node name="Ambiente" type="Node3D"]
+[sub_resource type="Sky" id="Sky_57gmc"]
+sky_material = SubResource("ProceduralSkyMaterial_dfktb")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_dfktb")
+[sub_resource type="Environment" id="Environment_vyamk"]
+background_mode = 2
+sky = SubResource("Sky_57gmc")
+ambient_light_source = 3
+glow_bloom = 1.0
+adjustment_enabled = true
+
+[node name="Ambiente" type="Node3D" unique_id=1627241653]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1697725867]
+environment = SubResource("Environment_vyamk")

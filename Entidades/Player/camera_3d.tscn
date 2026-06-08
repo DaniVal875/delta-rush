@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c8moa2d8ikete"]
+
+[ext_resource type="PackedScene" uid="uid://bnqu2j6kvnwbw" path="res://delta-rush/Arma/Scenes2/Weapon.tscn" id="1_5h4q5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5h4q5"]
+radius = 1.0
+
+[node name="Camera3D" type="Camera3D" unique_id=2036293192]
+
+[node name="WeaponHolder" type="Node3D" parent="." unique_id=1641679667]
+transform = Transform3D(0.99798816, 0.012541271, 0.062147386, 0, 0.98024005, -0.1978113, -0.06340017, 0.19741334, 0.97826797, -0.06681192, -0.3359064, 0.18312097)
+
+[node name="Weapon" parent="WeaponHolder" unique_id=502482498 instance=ExtResource("1_5h4q5")]
+transform = Transform3D(0.99547285, 0.01880128, 0.093168445, -0.018801287, 0.9998229, -0.0008777231, -0.09316845, -0.0008779615, 0.99564993, 0.34140965, -0.054025277, -0.63373387)
+cadencia = 0.12
+
+[node name="DetectorAimAssist" type="ShapeCast3D" parent="." unique_id=213424844]
+shape = SubResource("SphereShape3D_5h4q5")
+target_position = Vector3(0, 0, -80)
+collision_mask = 12

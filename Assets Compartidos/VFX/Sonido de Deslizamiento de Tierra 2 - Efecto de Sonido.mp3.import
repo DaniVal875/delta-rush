@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxdrgikpfkn2t"
+path="res://.godot/imported/Sonido de Deslizamiento de Tierra 2 - Efecto de Sonido.mp3-1c0883e4df3b446325530630cead7615.mp3str"
+
+[deps]
+
+source_file="res://delta-rush/Assets Compartidos/VFX/Sonido de Deslizamiento de Tierra 2 - Efecto de Sonido.mp3"
+dest_files=["res://.godot/imported/Sonido de Deslizamiento de Tierra 2 - Efecto de Sonido.mp3-1c0883e4df3b446325530630cead7615.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -6,6 +6,7 @@ extends CanvasLayer
 func _ready():
 	$PauseMenu.hide()
 	$Mira.show()
+	btn_reanudar.grab_focus()
 	process_mode = Node.PROCESS_MODE_ALWAYS   # ← Muy importante
 
 	# Conectar botones de forma segura
@@ -16,6 +17,7 @@ func _ready():
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("ui_cancel"):
+		btn_reanudar.grab_focus()
 		toggle_pause()
 
 func toggle_pause():

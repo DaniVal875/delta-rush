@@ -13,25 +13,25 @@ scale_max = 0.29999998
 color = Color(0.8809079, 0.43050477, 0.10325088, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f513l"]
-albedo_color = Color(0.88235295, 0.43137255, 0.101960786, 1)
-emission_enabled = true
-emission = Color(1, 0.16078432, 0.101960786, 1)
-emission_energy_multiplier = 1.5
+transparency = 1
+albedo_color = Color(0.96889156, 0.29687124, 0.99999994, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
-[sub_resource type="SphereMesh" id="SphereMesh_mq8iq"]
+[sub_resource type="QuadMesh" id="QuadMesh_ah5w7"]
 material = SubResource("StandardMaterial3D_f513l")
-radius = 0.05
-height = 0.1
 
 [node name="Explosion" type="Node3D" unique_id=617106476]
 script = ExtResource("1_f513l")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=131211373]
 emitting = false
-amount = 150
+amount = 30
 lifetime = 0.8
 one_shot = true
 explosiveness = 0.9
 visibility_aabb = AABB(-5.9473963, -7.3229, -5.4300447, 12.150296, 10.41618, 11.062244)
 process_material = SubResource("ParticleProcessMaterial_mq8iq")
-draw_pass_1 = SubResource("SphereMesh_mq8iq")
+draw_pass_1 = SubResource("QuadMesh_ah5w7")

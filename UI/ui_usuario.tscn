@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cjmvd3x0nq1yg"]
+
+[ext_resource type="Script" uid="uid://btone85gcoaqb" path="res://delta-rush/UI/manejador_marcadores.gd" id="1_trxth"]
+[ext_resource type="FontFile" uid="uid://bxntie64d8pcw" path="res://delta-rush/Assets Compartidos/Estilo de texto/mono_2/' Mono Bold.ttf" id="2_p0ndq"]
+[ext_resource type="Script" uid="uid://c1teguurb6y36" path="res://delta-rush/UI/label_contador.gd" id="3_cs4ht"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tenop"]
+font = ExtResource("2_p0ndq")
+
+[node name="UI_Usuario" type="CanvasLayer" unique_id=1788526880]
+script = ExtResource("1_trxth")
+
+[node name="LabelContador" type="Label" parent="." unique_id=233623231]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+label_settings = SubResource("LabelSettings_tenop")
+script = ExtResource("3_cs4ht")
+
+[node name="EfectoAturdido" type="ColorRect" parent="." unique_id=1882090514]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.017430156, 0.017430156, 0.048515536, 0.5411765)

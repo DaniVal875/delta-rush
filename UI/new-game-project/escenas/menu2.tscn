@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dw83x2no1inlq" path="res://delta-rush/UI/new-game-project/scripts/menu.gd" id="1_3nh36"]
 [ext_resource type="Texture2D" uid="uid://cw73foxue10jk" path="res://delta-rush/UI/new-game-project/imagenes/background.jpg" id="1_mqw74"]
+[ext_resource type="FontFile" uid="uid://bxntie64d8pcw" path="res://delta-rush/Assets Compartidos/Estilo de texto/mono_2/' Mono Bold.ttf" id="3_o1md0"]
 
 [sub_resource type="GDScript" id="GDScript_itwu3"]
 script/source = "extends TextureRect
@@ -12,10 +13,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 15.0
-offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("VBoxContainer")
+focus_neighbor_bottom = NodePath("VBoxContainer")
 script = ExtResource("1_3nh36")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1441814424]
@@ -29,32 +30,50 @@ texture = ExtResource("1_mqw74")
 script = SubResource("GDScript_itwu3")
 
 [node name="Label" type="Label" parent="TextureRect" unique_id=2001248389]
-layout_mode = 0
-offset_left = 409.0
-offset_top = 41.0
-offset_right = 735.0
-offset_bottom = 115.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -163.0
+offset_top = 30.0
+offset_right = 163.0
+offset_bottom = 104.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0.5176471, 0.8235294, 0.99215686, 1)
+theme_override_fonts/font = ExtResource("3_o1md0")
 theme_override_font_sizes/font_size = 50
-text = "  DELTA RUSH"
+text = "DELTA RUSH"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=830291498]
-layout_mode = 0
-offset_left = 322.0
-offset_top = 157.0
-offset_right = 819.0
-offset_bottom = 461.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.5
+offset_top = -152.0
+offset_right = 248.5
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
 theme_override_constants/separation = 100
 
 [node name="btnJugar" type="Button" parent="VBoxContainer" unique_id=42392984]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5176471, 0.8235294, 0.99215686, 1)
+theme_override_fonts/font = ExtResource("3_o1md0")
 theme_override_font_sizes/font_size = 50
 text = "JUGAR"
 
 [node name="btnSalir" type="Button" parent="VBoxContainer" unique_id=168224254]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5176471, 0.8235294, 0.99215686, 1)
+theme_override_fonts/font = ExtResource("3_o1md0")
 theme_override_font_sizes/font_size = 50
 text = "SALIR"
 

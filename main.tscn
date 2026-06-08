@@ -4,18 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://d2af8p3xj072i" path="res://delta-rush/Entidades/Player/player.tscn" id="2_rf02o"]
 [ext_resource type="PackedScene" uid="uid://d1ysyvrrsll4t" path="res://delta-rush/UI/new-game-project/escenas/PauseMenu.tscn" id="3_rf02o"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rf02o"]
-sky_curve = 0.7135259
-
-[sub_resource type="Sky" id="Sky_57gmc"]
-sky_material = SubResource("ProceduralSkyMaterial_rf02o")
-
-[sub_resource type="Environment" id="Environment_kp5ch"]
-background_mode = 2
-sky = SubResource("Sky_57gmc")
-ambient_light_source = 3
-adjustment_enabled = true
-
 [node name="Main" type="Node3D" unique_id=16412285]
 
 [node name="Node3D" parent="." unique_id=2133891757 instance=ExtResource("1_rsaiv")]
@@ -23,7 +11,4 @@ adjustment_enabled = true
 [node name="CanvasLayer" parent="." unique_id=1773230764 instance=ExtResource("3_rf02o")]
 
 [node name="Player" parent="." unique_id=1588911036 instance=ExtResource("2_rf02o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.668819, 2.40094, 303.9822)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1231408072]
-environment = SubResource("Environment_kp5ch")
+transform = Transform3D(-0.9777283, 0, -0.20987457, 0, 1, 0, 0.20987457, 0, -0.9777283, 307.37634, 1.0424204, -9.279775)
