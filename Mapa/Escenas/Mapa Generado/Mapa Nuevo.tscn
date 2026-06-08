@@ -5844,7 +5844,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 281.5684, 11.047161, -120.867
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Agregados Dani" unique_id=871887355]
 stream = ExtResource("14_lnd6r")
-volume_db = -15.0
+volume_db = -13.0
 
 [connection signal="body_exited" from="Agregados Dani/Area_Empezar_Carrera" to="Agregados Dani" method="_on_area_empezar_carrera_body_exited"]
 [connection signal="body_exited" from="Agregados Dani/Area_Terminar_Carrera" to="Agregados Dani" method="_on_area_terminar_carrera_body_exited"]
