@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var grid_puntuaciones = $SubViewport/Control/VBoxContainer/GridContainer
+const RUTA_GUARDADO = "user://records_pista.save"
 
 # Lista de puntuaciones predeterminadas (Fantasmas)
 var tabla_records = [
@@ -23,6 +24,7 @@ var tabla_records = [
 ]
 
 func _ready():
+	cargar_datos() # Cargamos los datos guardados al iniciar
 	actualizar_pizarra()
 
 func actualizar_pizarra():
@@ -40,7 +42,6 @@ func actualizar_pizarra():
 		
 		crear_label_en_grid("%02d" % (i + 1), Color.GRAY)
 		
-		# Verificamos exactamente "TU" para pintarlo de Cyan
 		var color_nombre = Color.CYAN if record["nombre"] == "TU" else Color.WHITE
 		crear_label_en_grid(record["nombre"], color_nombre)
 		
@@ -48,7 +49,6 @@ func actualizar_pizarra():
 			crear_label_en_grid("%.2f" % record["tiempo"], Color.GOLD)
 		else:
 			crear_label_en_grid("--:--", Color.DARK_GRAY)
-
 
 var fuente_pizarra = preload("res://delta-rush/Assets Compartidos/Estilo de texto/mono_2/' Mono Bold.ttf")
 
@@ -62,9 +62,24 @@ func crear_label_en_grid(texto: String, color: Color):
 
 func registrar_nuevo_tiempo(nuevo_tiempo: float):
 	for record in tabla_records:
-		# Buscamos exactamente "TU" para actualizar el récord
 		if record["nombre"] == "TU":
 			if record["tiempo"] == 0.0 or nuevo_tiempo < record["tiempo"]:
 				record["tiempo"] = nuevo_tiempo
+				guardar_datos() # Guardamos cada vez que se actualiza el récord
 	
 	actualizar_pizarra()
+
+# --- FUNCIONES DE PERSISTENCIA ---
+
+func guardar_datos():
+	var archivo = FileAccess.open(RUTA_GUARDADO, FileAccess.WRITE)
+	archivo.store_var(tabla_records)
+	archivo.close()
+
+func cargar_datos():
+	if FileAccess.file_exists(RUTA_GUARDADO):
+		var archivo = FileAccess.open(RUTA_GUARDADO, FileAccess.READ)
+		var datos_guardados = archivo.get_var()
+		archivo.close()
+		if datos_guardados != null:
+			tabla_records = datos_guardados
